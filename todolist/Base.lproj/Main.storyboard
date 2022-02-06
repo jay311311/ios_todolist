@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,14 +16,104 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jyl-wV-NaK">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6W3-4o-r6D">
+                                    <size key="itemSize" width="414" height="75"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TodoListCell" id="aMH-2E-cd7" customClass="TodoListCell" customModule="todolist_ios">
+                                        <rect key="frame" x="0.0" y="50" width="414" height="75"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="HJD-E9-J4Y">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dha-ku-sTU">
+                                                    <rect key="frame" x="19" y="22" width="67" height="31"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nsR-wo-GWn">
+                                                    <rect key="frame" x="166" y="27" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dx9-HA-9bn">
+                                                    <rect key="frame" x="339" y="22" width="67" height="31"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="Delete"/>
+                                                </button>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1AT-dU-fhj" userLabel="Views">
+                                                    <rect key="frame" x="87" y="37" width="240" height="1"/>
+                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="240" id="7Hh-80-ety"/>
+                                                        <constraint firstAttribute="height" constant="1" id="Dic-mJ-hoH"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="dha-ku-sTU" firstAttribute="centerY" secondItem="HJD-E9-J4Y" secondAttribute="centerY" id="HGZ-9b-tWn"/>
+                                                <constraint firstAttribute="trailing" secondItem="Dx9-HA-9bn" secondAttribute="trailing" constant="8" id="VQg-MS-lcm"/>
+                                                <constraint firstItem="1AT-dU-fhj" firstAttribute="centerY" secondItem="HJD-E9-J4Y" secondAttribute="centerY" id="cMd-MP-DRj"/>
+                                                <constraint firstItem="1AT-dU-fhj" firstAttribute="centerX" secondItem="HJD-E9-J4Y" secondAttribute="centerX" id="hDG-zi-eKp"/>
+                                                <constraint firstItem="Dx9-HA-9bn" firstAttribute="centerY" secondItem="HJD-E9-J4Y" secondAttribute="centerY" id="kvb-WV-4R4"/>
+                                                <constraint firstItem="dha-ku-sTU" firstAttribute="leading" secondItem="HJD-E9-J4Y" secondAttribute="leading" constant="19" id="yXS-df-K5d"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="414" height="75"/>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TodoListHeaderView" id="CjB-wZ-aER" customClass="TodoListHeaderView" customModule="todolist_ios">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udB-2p-jV5">
+                                            <rect key="frame" x="32" y="14.5" width="46" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="udB-2p-jV5" firstAttribute="leading" secondItem="CjB-wZ-aER" secondAttribute="leading" constant="32" id="Exz-0P-0y3"/>
+                                        <constraint firstItem="udB-2p-jV5" firstAttribute="centerY" secondItem="CjB-wZ-aER" secondAttribute="centerY" id="xgY-cw-pWB"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="sectionTitleLabel" destination="udB-2p-jV5" id="TUk-kH-qfY"/>
+                                    </connections>
+                                </collectionReusableView>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="DHF-w9-F07"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="MoB-ry-h4C"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jyl-wV-NaK" secondAttribute="trailing" id="8DP-6T-RSO"/>
+                            <constraint firstItem="jyl-wV-NaK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="JIB-Zy-Vt1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="jyl-wV-NaK" secondAttribute="bottom" id="NeU-8z-WB2"/>
+                            <constraint firstItem="jyl-wV-NaK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="WML-1L-yrJ"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Tasks" image="checkmark.circle.fill" catalog="system" id="11g-N7-eAT"/>
+                    <connections>
+                        <outlet property="collectionView" destination="jyl-wV-NaK" id="1NM-lW-J1h"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-341" y="878"/>
+            <point key="canvasLocation" x="-342.02898550724638" y="877.90178571428567"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="eMj-hw-C9F">
@@ -30,6 +121,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="cSR-Y8-amy" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ssM-m6-aQb">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="selectedImageTintColor" systemColor="systemOrangeColor"/>
