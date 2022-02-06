@@ -39,9 +39,8 @@
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nsR-wo-GWn">
-                                                    <rect key="frame" x="166" y="27" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nsR-wo-GWn">
+                                                    <rect key="frame" x="99" y="27" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -61,6 +60,8 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="nsR-wo-GWn" firstAttribute="leading" secondItem="dha-ku-sTU" secondAttribute="leading" constant="80" id="1ro-Oc-pYT"/>
+                                                <constraint firstItem="nsR-wo-GWn" firstAttribute="centerY" secondItem="HJD-E9-J4Y" secondAttribute="centerY" id="BsO-Tl-x6U"/>
                                                 <constraint firstItem="dha-ku-sTU" firstAttribute="centerY" secondItem="HJD-E9-J4Y" secondAttribute="centerY" id="HGZ-9b-tWn"/>
                                                 <constraint firstAttribute="trailing" secondItem="Dx9-HA-9bn" secondAttribute="trailing" constant="8" id="VQg-MS-lcm"/>
                                                 <constraint firstItem="1AT-dU-fhj" firstAttribute="centerY" secondItem="HJD-E9-J4Y" secondAttribute="centerY" id="cMd-MP-DRj"/>
@@ -70,6 +71,13 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="414" height="75"/>
+                                        <connections>
+                                            <outlet property="checkButton" destination="dha-ku-sTU" id="ZtU-7t-elA"/>
+                                            <outlet property="deleteButton" destination="Dx9-HA-9bn" id="u2d-3P-nEM"/>
+                                            <outlet property="descriptionLabel" destination="nsR-wo-GWn" id="4vd-kQ-n0P"/>
+                                            <outlet property="strikeThroughWidth" destination="7Hh-80-ety" id="kpV-Uf-LF4"/>
+                                            <outlet property="strikeThroughtView" destination="1AT-dU-fhj" id="kuf-gJ-0Tn"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TodoListHeaderView" id="CjB-wZ-aER" customClass="TodoListHeaderView" customModule="todolist_ios">

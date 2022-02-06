@@ -18,12 +18,15 @@ struct Todo: Codable, Equatable {
     
     mutating func update(isDone: Bool, detail: String, isToday: Bool) {
         // TODO: update 로직 추가
-        
+        self.isDone = isDone
+        self.detail = detail
+        self.isToday = isToday
     }
     
     static func == (lhs: Self, rhs: Self) -> Bool {
-        // TODO: 동등 조건 추가
-        return true
+        // TODO: 동등 조건 추가 (Equatable 프로토콜을 썻기에 이런 문장 가능)
+        return lhs.id  == rhs.id
+        // 왼쪽의 id와 오른쪽의 id 가 같은 것이다
     }
 }
 
@@ -37,16 +40,25 @@ class TodoManager {
     
     func createTodo(detail: String, isToday: Bool) -> Todo {
         //TODO: create로직 추가
-        return Todo(id: 1, isDone: false, detail: "2", isToday: true)
+        let nextId:Int =  TodoManager.lastId + 1
+        TodoManager.lastId = nextId
+        return Todo(id: nextId, isDone:  false, detail: detail, isToday: isToday)
+        //  return Todo(id: 1, isDone: false, detail: "2", isToday: true)
     }
     
     func addTodo(_ todo: Todo) {
         //TODO: add로직 추가
+        todos.append(todo)
+        saveTodo()
     }
     
     func deleteTodo(_ todo: Todo) {
         //TODO: delete 로직 추가
         
+        if let index = todos.firstIndex(of: todo){
+            todos.remove(at: index)
+        }
+            
     }
     
     func updateTodo(_ todo: Todo) {
@@ -55,6 +67,7 @@ class TodoManager {
     }
     
     func saveTodo() {
+        //todo를 데이터에 저장
         Storage.store(todos, to: .documents, as: "todos.json")
     }
     

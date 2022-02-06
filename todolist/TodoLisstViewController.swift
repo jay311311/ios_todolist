@@ -110,6 +110,7 @@ class TodoListCell : UICollectionViewCell{
     @IBOutlet weak var checkButton : UIButton!
     @IBOutlet weak var descriptionLabel : UILabel!
     @IBOutlet weak var deleteButton : UIButton!
+    @IBOutlet weak var strikeThroughtView : UIView!
     
     @IBOutlet weak var strikeThroughWidth : NSLayoutConstraint!
     
@@ -126,8 +127,8 @@ class TodoListCell : UICollectionViewCell{
         reset()
     }
     
-    func updateUI(todo : Any){
-        // 셀 업데이트 하기 any ->  Todo 수정
+    func updateUI(todo : Todo){
+        // 셀 업데이트 하기
     }
     
     private func showStrikeThrough(_ show: Bool){
@@ -144,12 +145,13 @@ class TodoListCell : UICollectionViewCell{
     }
     
     @IBAction func checkButtonTapped(_ sender : Any){
-        //todo : check button 처리
+        //todo : check button 처리 & todo리스트 관리하는 곳에서 done 처리 제공
     }
     
     @IBAction func deleteButtonTapped(_ sender : Any){
-        //todo : eletetbutton 처리
-        deleteButtonTapHandler?()
+        //todo : deletetbutton 처리 & todo리스트 관리하는 곳에서 delete처리 제공
+        
+        //deleteButtonTapHandler?()
 
     }
 }
