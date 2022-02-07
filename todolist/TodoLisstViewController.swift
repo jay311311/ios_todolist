@@ -28,8 +28,18 @@ class TodoListViewController: UIViewController {
         // todo : 데이터 불러오기
         todoListViewModel.loadTasks()
         
+        let todo = TodoManager.shared.createTodo(detail: "🤜펀치", isToday: true)
+        Storage.saveTodo(todo, fileName: "test.json")
         
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let todo = Storage.restoreTodo("test.json")
+        print("========\(todo)")
+    }
+    
+    
     
     @IBAction func isTodaysButtonTapped(_ sender: Any){
         //todo : 투데이 버튼 토글 작업
@@ -147,6 +157,11 @@ class TodoListCell : UICollectionViewCell{
     
     func updateUI(todo : Todo){
         // 셀 업데이트 하기
+        checkButton.isSelected = todo.isDone
+        descriptionLabel.text = todo.detail
+        descriptionLabel.alpha = todo.isDone ? 0.2 : 1
+        deleteButton.isHidden =  todo.isDone == false
+        showStrikeThrough(todo.isDone)
     }
     
     private func showStrikeThrough(_ show: Bool){
@@ -159,16 +174,24 @@ class TodoListCell : UICollectionViewCell{
     
     func reset(){
         //todo : reset 로직 구현
-        
+        descriptionLabel.alpha = 1
+        deleteButton.isHidden = false
+        showStrikeThrough(false)
     }
     
     @IBAction func checkButtonTapped(_ sender : Any){
         //todo : check button 처리 & todo리스트 관리하는 곳에서 done 처리 제공
+        checkButton.isSelected =  !checkButton.isSelected
+        let isDone = checkButton.isSelected
+        showStrikeThrough(false)
+        descriptionLabel.alpha = isDone ? 0.2 : 1
+        deleteButton.isHidden = !isDone
+        donButtonTapHandler?(isDone)
     }
     
     @IBAction func deleteButtonTapped(_ sender : Any){
         //todo : deletetbutton 처리 & todo리스트 관리하는 곳에서 delete처리 제공
-        
+        deleteButtonTapHandler?()
         //deleteButtonTapHandler?()
 
     }
