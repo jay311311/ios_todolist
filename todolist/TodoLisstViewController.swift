@@ -55,6 +55,15 @@ class TodoListViewController: UIViewController {
         // add task to view modal
         // adan tableview reload or update
         
+        guard let detail = inputTextField.text, detail.isEmpty == false else { return }
+        
+        let todo = TodoManager.shared.createTodo(detail: detail, isToday: isTodayButton.isSelected)
+        todoListViewModel.addTodo(todo)
+        collectionView.reloadData()
+        inputTextField.text = ""
+        isTodayButton.isSelected = false
+        
+        
     }
     
     //todo : 백그라운드 탭할때, 키보드 내려오게 하기
@@ -117,6 +126,20 @@ extension TodoListViewController : UICollectionViewDataSource {
         //todo : todo 를 이용해서 updateUI
         //todo :  donbuttonhandler 작성
         //todo : deleteButtonHandler 작성
+        
+        cell.donButtonTapHandler = { isDone in
+            todo.isDone = isDone
+            self.todoListViewModel.updateTodo(todo)
+            self.collectionView.reloadData()
+            
+        }
+        
+        cell.deleteButtonTapHandler = {
+            self.todoListViewModel.deleteTodo(todo)
+            self.collectionView.reloadData()
+            
+        }
+        
         
        return cell
     }
@@ -185,7 +208,7 @@ class TodoListCell : UICollectionViewCell{
     
     private func showStrikeThrough(_ show: Bool){
         if show{
-            strikeThroughWidth.constant = descriptionLabel.bounds.width
+            strikeThroughWidth.constant = 200
         }else{
             strikeThroughWidth.constant = 0
         }
@@ -206,6 +229,7 @@ class TodoListCell : UICollectionViewCell{
         descriptionLabel.alpha = isDone ? 0.2 : 1
         deleteButton.isHidden = !isDone
         donButtonTapHandler?(isDone)
+        print("클릭했자")
     }
     
     @IBAction func deleteButtonTapped(_ sender : Any){

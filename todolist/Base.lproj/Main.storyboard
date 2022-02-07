@@ -54,18 +54,18 @@
                                                     <state key="selected">
                                                         <imageReference key="image" image="checkmark.circle.fill" catalog="system" symbolScale="default"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="checkButtonTapped:" destination="aMH-2E-cd7" eventType="touchUpInside" id="eZY-Fe-mNV"/>
+                                                    </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nsR-wo-GWn">
-                                                    <rect key="frame" x="99" y="27" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dx9-HA-9bn">
                                                     <rect key="frame" x="339" y="22" width="67" height="31"/>
                                                     <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="trash.circle.fill" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="deleteButtonTapped:" destination="aMH-2E-cd7" eventType="touchUpInside" id="ueG-lY-qLl"/>
+                                                    </connections>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1AT-dU-fhj" userLabel="Views">
                                                     <rect key="frame" x="87" y="37" width="240" height="1"/>
@@ -75,6 +75,12 @@
                                                         <constraint firstAttribute="height" constant="1" id="Dic-mJ-hoH"/>
                                                     </constraints>
                                                 </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nsR-wo-GWn">
+                                                    <rect key="frame" x="99" y="27" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="nsR-wo-GWn" firstAttribute="leading" secondItem="dha-ku-sTU" secondAttribute="leading" constant="80" id="1ro-Oc-pYT"/>
