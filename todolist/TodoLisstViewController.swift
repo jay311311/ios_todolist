@@ -25,24 +25,29 @@ class TodoListViewController: UIViewController {
         
         // todo : 키보드 디텍션
         
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name:  UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name:  UIResponder.keyboardWillHideNotification, object: nil)
+        
         // todo : 데이터 불러오기
         todoListViewModel.loadTasks()
-        
-        let todo = TodoManager.shared.createTodo(detail: "🤜펀치", isToday: true)
-        Storage.saveTodo(todo, fileName: "test.json")
+//        
+//        let todo = TodoManager.shared.createTodo(detail: "🤜펀치", isToday: true)
+//        Storage.saveTodo(todo, fileName: "test.json")
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let todo = Storage.restoreTodo("test.json")
-        print("========\(todo)")
+//        let todo = Storage.restoreTodo("test.json")
+//        print("========\(todo)")
     }
     
     
     
     @IBAction func isTodaysButtonTapped(_ sender: Any){
         //todo : 투데이 버튼 토글 작업
+        isTodayButton.isSelected = !isTodayButton.isSelected
         
     }
     @IBAction func addTaskButtonTapped(_ sender : Any){
@@ -51,14 +56,28 @@ class TodoListViewController: UIViewController {
         // adan tableview reload or update
         
     }
-
+    
+    //todo : 백그라운드 탭할때, 키보드 내려오게 하기
+    
+    @IBAction func tapBG(_ sender: Any) {
+        inputTextField.resignFirstResponder()
+    }
+    
 }
 
 extension TodoListViewController {
     @objc private func adjustInputView(noti: Notification) {
         guard let userInfo = noti.userInfo else { return }
         // TODO: 키보드 높이에 따른 인풋뷰 위치 변경
+        guard let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else{ return }
         
+        if noti.name  ==  UIResponder.keyboardWillShowNotification {
+            let adjustmentHeight =  keyboardFrame.height - view.safeAreaInsets.bottom
+            inputViewBottom.constant = adjustmentHeight
+        } else {
+            inputViewBottom.constant = 0
+        }
+        print("keyborard endframe ===>\(keyboardFrame)")
     }
 }
 

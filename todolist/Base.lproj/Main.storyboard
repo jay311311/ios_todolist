@@ -27,6 +27,15 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
+                                <view key="backgroundView" contentMode="scaleToFill" id="2zm-HX-8c6">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="769"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <gestureRecognizers/>
+                                    <connections>
+                                        <outletCollection property="gestureRecognizers" destination="7II-AA-b8P" appends="YES" id="ps4-xC-gqv"/>
+                                    </connections>
+                                </view>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TodoListCell" id="aMH-2E-cd7" customClass="TodoListCell" customModule="todolist_ios">
                                         <rect key="frame" x="0.0" y="50" width="414" height="75"/>
@@ -112,11 +121,68 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="MoB-ry-h4C"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qND-23-umt">
+                                <rect key="frame" x="0.0" y="753" width="414" height="60"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="i want to ..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sot-m2-v8J">
+                                        <rect key="frame" x="8" y="13" width="298" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1f0-VL-VYh">
+                                        <rect key="frame" x="371" y="12.5" width="35" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="35" id="Opo-Lx-Bcz"/>
+                                            <constraint firstAttribute="height" constant="35" id="kqs-nw-KxG"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="18"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="addTaskButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tnA-Rv-63l"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HUr-zJ-Q4G">
+                                        <rect key="frame" x="316" y="12.5" width="45" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="45" id="5yd-Wj-Aaa"/>
+                                            <constraint firstAttribute="height" constant="35" id="7gb-tF-YT3"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Today">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <state key="selected">
+                                            <color key="titleColor" systemColor="systemOrangeColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="isTodaysButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6n3-cW-ypJ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="secondarySystemFillColor"/>
+                                <constraints>
+                                    <constraint firstItem="1f0-VL-VYh" firstAttribute="centerY" secondItem="Sot-m2-v8J" secondAttribute="centerY" id="9Ti-3a-FMN"/>
+                                    <constraint firstItem="HUr-zJ-Q4G" firstAttribute="centerY" secondItem="1f0-VL-VYh" secondAttribute="centerY" id="DDH-LE-7YY"/>
+                                    <constraint firstItem="Sot-m2-v8J" firstAttribute="centerY" secondItem="qND-23-umt" secondAttribute="centerY" id="M0X-kU-6ze"/>
+                                    <constraint firstAttribute="height" constant="60" id="R0x-p5-uGE"/>
+                                    <constraint firstAttribute="trailing" secondItem="1f0-VL-VYh" secondAttribute="trailing" constant="8" id="U3s-Ex-3a3"/>
+                                    <constraint firstItem="1f0-VL-VYh" firstAttribute="leading" secondItem="HUr-zJ-Q4G" secondAttribute="trailing" constant="10" id="cad-ML-qEi"/>
+                                    <constraint firstItem="HUr-zJ-Q4G" firstAttribute="leading" secondItem="Sot-m2-v8J" secondAttribute="trailing" constant="10" id="cwQ-sT-izu"/>
+                                    <constraint firstItem="Sot-m2-v8J" firstAttribute="leading" secondItem="qND-23-umt" secondAttribute="leading" constant="8" id="pd7-nE-QBk"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="qND-23-umt" secondAttribute="bottom" id="3i4-t4-ih9"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jyl-wV-NaK" secondAttribute="trailing" id="8DP-6T-RSO"/>
+                            <constraint firstItem="qND-23-umt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="AcB-sR-g5b"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qND-23-umt" secondAttribute="trailing" id="CNq-nH-va9"/>
                             <constraint firstItem="jyl-wV-NaK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="JIB-Zy-Vt1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="jyl-wV-NaK" secondAttribute="bottom" id="NeU-8z-WB2"/>
                             <constraint firstItem="jyl-wV-NaK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="WML-1L-yrJ"/>
@@ -124,10 +190,19 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Tasks" image="checkmark.circle.fill" catalog="system" id="11g-N7-eAT"/>
                     <connections>
+                        <outlet property="addButton" destination="1f0-VL-VYh" id="gxg-Pv-Bca"/>
                         <outlet property="collectionView" destination="jyl-wV-NaK" id="1NM-lW-J1h"/>
+                        <outlet property="inputTextField" destination="Sot-m2-v8J" id="tY6-RH-RkD"/>
+                        <outlet property="inputViewBottom" destination="3i4-t4-ih9" id="FjN-v7-hyi"/>
+                        <outlet property="isTodayButton" destination="HUr-zJ-Q4G" id="H27-qQ-h2I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="7II-AA-b8P">
+                    <connections>
+                        <action selector="tapBG:" destination="BYZ-38-t0r" id="Mys-bv-zmy"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-342.02898550724638" y="877.90178571428567"/>
         </scene>
@@ -232,7 +307,11 @@
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="circle" catalog="system" width="128" height="121"/>
         <image name="gear" catalog="system" width="128" height="119"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="trash.circle.fill" catalog="system" width="128" height="121"/>
+        <systemColor name="secondarySystemFillColor">
+            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
