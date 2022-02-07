@@ -63,7 +63,7 @@ class TodoManager {
     func updateTodo(_ todo: Todo) {
         //TODO: updatee 로직 추가
         guard let index = todos.firstIndex(of: todo) else {return}
-        todo.update(isDone: todo.isDone, detail: todo.detail, isToday: todo.isToday)
+        todos[index].update(isDone: todo.isDone, detail: todo.detail, isToday: todo.isToday)
         saveTodo()
     }
     
